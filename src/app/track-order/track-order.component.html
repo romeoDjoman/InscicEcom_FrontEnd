@@ -1,0 +1,35 @@
+<form [formGroup]="searchOrderForm" (ngSubmit)="submitForm()" class="search-form">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Entrez l'ID de suivi pour rechercher</mat-label>
+        <input matInput formControlName="trackingId" placeholder="ID de suivi">
+        <button mat-raised-button matSuffix color="primary" [disabled]="searchOrderForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+
+<div class="order-details-container" *ngIf="order">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Détails de la commande</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="order-detail">
+                ID de suivi : <strong>{{order.trackingId}}</strong>
+            </div>
+            <div class="order-detail">
+                Nom de l'utilisateur : <strong>{{order.userName}}</strong>
+            </div>
+            <div class="order-detail">
+                Adresse : <strong>{{order.address}}</strong>
+            </div>
+            <div class="order-detail">
+                Montant : <strong>{{order.amount | currency}}</strong>
+            </div>
+            <div class="order-detail">
+                Date : <strong>{{order.date | date:'dd/MM/yyyy'}}</strong>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Publier une FAQ</h2>
+    <form [formGroup]="FAQForm" (ngSubmit)="postFAQ()">
+    
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Question</mat-label>
+            <textarea matInput placeholder="Question" formControlName="question"></textarea>
+            <mat-error *ngIf="FAQForm.get('question')?.hasError('required')">Ce champ est requis !</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Réponse</mat-label>
+            <textarea matInput placeholder="Réponse" formControlName="answer"></textarea>
+            <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')">Ce champ est requis !</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Publier la FAQ</button>
+
+    </form>
+</div>
