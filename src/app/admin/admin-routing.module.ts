@@ -12,7 +12,7 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 const routes: Routes = [
-  { path: '', component: AdminComponent },
+  // { path: '', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
   { path: 'product', component: PostProductComponent },
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'coupons', component: CouponsComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'faq/:productId', component: PostProductFaqComponent },
-  { path: 'analytics', component: AnalyticsComponent }, 
+  { path: 'analytics', component: AnalyticsComponent },
 
 ];
 

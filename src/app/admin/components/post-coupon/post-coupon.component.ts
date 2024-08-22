@@ -26,7 +26,7 @@ export class PostCouponComponent {
       discount: [null,[Validators.required]],
       expirationDate: [null,[Validators.required]],
 
-    })  
+    })
   }
 
   addCoupon(){

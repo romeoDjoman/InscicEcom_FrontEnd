@@ -23,7 +23,7 @@ export class PostProductFaqComponent {
     ngOnInit(){
       this.FAQForm = this.fb.group({
         question:[null,[Validators.required]],
-        answer:[null,[Validators.required]],  
+        answer:[null,[Validators.required]],
       })
     }
 

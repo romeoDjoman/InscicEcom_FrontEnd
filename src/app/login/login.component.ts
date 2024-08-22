@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { response } from 'express';
-import { error } from 'console';
 import { UserStorageService } from '../services/storage/user-storage.service';
 
 @Component({

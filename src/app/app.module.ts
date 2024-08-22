@@ -13,13 +13,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TrackOrderComponent } from './track-order/track-order.component';
+import {ShowcaseModule} from "./showcase/showcase.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    TrackOrderComponent
+    TrackOrderComponent,
   ],
   imports: [
     MatFormFieldModule,
@@ -30,7 +31,8 @@ import { TrackOrderComponent } from './track-order/track-order.component';
     DemoAngularMaterailModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ShowcaseModule
   ],
   providers: [
     provideClientHydration(),

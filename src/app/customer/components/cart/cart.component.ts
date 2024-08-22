@@ -3,7 +3,6 @@ import { CustomerService } from '../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { error } from 'node:console';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 @Component({
