@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminService } from '../../service/admin.service';
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-post-product',
@@ -14,17 +15,26 @@ export class PostProductComponent {
   listOfCategories: any=[];
   selectedFile: File | null;
   imagepreview: string | ArrayBuffer | null;
+  products: any[] = [];
 
   constructor(
     private fb:FormBuilder,
     private router:Router,
     private snackbar:MatSnackBar,
-    private adminService: AdminService
+    private adminService: AdminService,
+    @Inject(DOCUMENT) protected document: Document
   ){}
 
   onFileSelected(event: any){
     this.selectedFile = event.target.files[0];
     this.previewImage();
+  }
+
+  onFileSelectClick(): void {
+    const fileInput = this.document.getElementById('fileInput');
+    if (fileInput) {
+      (fileInput as HTMLInputElement).click();
+    }
   }
 
   previewImage(){

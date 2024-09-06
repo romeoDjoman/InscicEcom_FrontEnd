@@ -1,5 +1,5 @@
 <div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
-  <div class="navbar bg-base-100">
+  <div class="navbar bg-slate-50">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -19,7 +19,7 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li><a href="#">Home</a></li>
+          <li><a routerLink="/home" >Home</a></li>
           <li>
             <a href="#">Journals</a>
             <ul class="p-2">
@@ -45,7 +45,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a href="#">Home</a></li>
+        <li><a routerLink="/home">Home</a></li>
         <li>
           <details>
             <summary>SciPub</summary>
@@ -68,16 +68,17 @@
         </li>
         <li><a href="#">News & Views</a></li>
         <li><a href="#">Careers</a></li>
+        <li><a href="#" class="text-amber-500">Track my order</a></li>
       </ul>
     </div>
     <div class="navbar-end">
       <a class="btn" routerLink="/signup" routerLinkActive="active">Sign Up</a>
-      <a class="btn" routerLink="/signup" routerLinkActive="active">Log In</a>
+      <a class="btn" routerLink="/login" routerLinkActive="active">Log In</a>
     </div>
   </div>
 </div>
 <div *ngIf="isAdminLoggedIn">
-  <div class="navbar bg-base-100">
+  <div class="navbar bg-slate-50">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -97,7 +98,7 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li><a href="#">Home</a></li>
+          <li><a routerLink="/home">Home</a></li>
           <li>
             <a href="#">Journals</a>
             <ul class="p-2">
@@ -164,32 +165,32 @@
           </div>
         </div>
         <div class="dropdown dropdown-end">
-          <a class="btn" routerLink="/signup" routerLinkActive="active">Admin settings</a>
+          <a class="btn" routerLink="#" routerLinkActive="active">Admin settings</a>
           <ul
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
             <li>
-              <a class="justify-between">
+              <a class="justify-between" routerLink="/admin/dashboard">
                 Dashboard
-                <span class="badge">New</span>
               </a>
             </li>
             <hr>
-            <li><a href="#">Orders</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Show analytics</a></li>
-            <li><a href="#">Share a coupon</a></li>
+            <li><a routerLink="/admin/orders" routerLinkActive="active">Orders</a></li>
+            <li><a routerLink="/admin/product" routerLinkActive="active">Products</a></li>
+            <li><a routerLink="/admin/category" routerLinkActive="active">Categories</a></li>
+            <li><a  routerLink="/admin/analytics" routerLinkActive="active">Show analytics</a></li>
+            <li><a routerLink="/admin/post-coupon" routerLinkActive="active">Share a coupon</a></li>
+            <li><a routerLink="/admin/coupons" routerLinkActive="active">Coupon list</a></li>
             <hr>
-            <li><a href="#">Log Out</a></li>
+            <li><a routerLinkActive="active" (click)="logout()">Log Out</a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div *ngIf="isCustomerLoggedIn">
-  <div class="navbar bg-base-100">
+<div class="bg-slate-50" *ngIf="isCustomerLoggedIn">
+  <div class="navbar bg-slate-50">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -287,30 +288,27 @@
               <span class="text-lg font-bold">8 Items</span>
               <span class="text-info">Subtotal: $999</span>
               <div class="card-actions">
-                <button class="btn btn-primary btn-block">View cart</button>
+                <button class="btn btn-primary btn-block" routerLink="/customer/cart" routerLinkActive="active">View cart</button>
               </div>
             </div>
           </div>
         </div>
         <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-              <img
-                alt="User Avatar"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"/>
-            </div>
-          </div>
+          <a class="btn" routerLink="#" routerLinkActive="active">Actions</a>
           <ul
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
             <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
+              <a class="justify-between" routerLink="/customer/dashboard">
+                Dashboard
               </a>
             </li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
+            <hr>
+            <li><a href="#">Profil</a></li>
+            <li><a routerLink="/customer/my_orders" routerLinkActive="active">Orders</a></li>
+            <li><a routerLink="/customer/wishlist" routerLinkActive="active">Whishlist</a></li>
+            <hr>
+            <li><a routerLinkActive="active" (click)="logout()">Log Out</a></li>
           </ul>
         </div>
       </div>

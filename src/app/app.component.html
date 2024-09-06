@@ -1,41 +1,42 @@
-<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
-  <mat-toolbar class="navbar" color="primary">
-    <span class="navbar-brand">InscicEcom</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/order" routerLinkActive="active">Suivre la Commande</button>
-    <button mat-button routerLink="/signup" routerLinkActive="active">S'inscrire</button>
-    <button mat-button routerLink="/login" routerLinkActive="active">Se Connecter</button>
-  </mat-toolbar>
-</div>
+<div class="bg-slate-50">
+  <div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+    <mat-toolbar class="navbar" color="primary">
+      <span class="navbar-brand">InscicEcom</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/order" routerLinkActive="active">Suivre la Commande</button>
+      <button mat-button routerLink="/signup" routerLinkActive="active">S'inscrire</button>
+      <button mat-button routerLink="/login" routerLinkActive="active">Se Connecter</button>
+    </mat-toolbar>
+  </div>
 
-<div *ngIf="isAdminLoggedIn">
-  <mat-toolbar class="navbar" color="primary">
-    <span class="navbar-brand">InscicEcom</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Tableau de Bord</button>
-    <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analyse</button>
-    <button mat-button routerLink="/admin/category" routerLinkActive="active">Catégorie</button>
-    <button mat-button routerLink="/admin/product" routerLinkActive="active">Produit</button>
-    <button mat-button routerLink="/admin/orders" routerLinkActive="active">Commandes</button>
-    <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Publier un Coupon</button>
-    <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
-    <button mat-button routerLinkActive="active" (click)="logout()">Se Déconnecter</button>
-  </mat-toolbar>
-</div>
+  <div *ngIf="isAdminLoggedIn">
+    <mat-toolbar class="navbar" color="primary">
+      <span class="navbar-brand">InscicEcom</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Tableau de Bord</button>
+      <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analyse</button>
+      <button mat-button routerLink="/admin/category" routerLinkActive="active">Catégorie</button>
+      <button mat-button routerLink="/admin/product" routerLinkActive="active">Produit</button>
+      <button mat-button routerLink="/admin/orders" routerLinkActive="active">Commandes</button>
+      <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Publier un Coupon</button>
+      <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
+      <button mat-button routerLinkActive="active" (click)="logout()">Se Déconnecter</button>
+    </mat-toolbar>
+  </div>
 
-<div *ngIf="isCustomerLoggedIn">
-  <mat-toolbar class="navbar" color="primary">
-    <span class="navbar-brand">InscicEcom</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/customer/dashboard" routerLinkActive="active">Tableau de Bord</button>
-    <button mat-button routerLink="/customer/cart" routerLinkActive="active">Panier</button>
-    <button mat-button routerLink="/customer/my_orders" routerLinkActive="active">Commandes</button>
-    <button mat-button routerLink="/customer/wishlist" routerLinkActive="active">Liste de Souhaits</button>
-    <button mat-button routerLink="/customer/profile" routerLinkActive="active">Profil</button>
-    <button mat-button routerLinkActive="active" (click)="logout()">Se Déconnecter</button>
-  </mat-toolbar>
+  <div *ngIf="isCustomerLoggedIn">
+    <mat-toolbar class="navbar" color="primary">
+      <span class="navbar-brand">InscicEcom</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/customer/dashboard" routerLinkActive="active">Tableau de Bord</button>
+      <button mat-button routerLink="/customer/cart" routerLinkActive="active">Panier</button>
+      <button mat-button routerLink="/customer/my_orders" routerLinkActive="active">Commandes</button>
+      <button mat-button routerLink="/customer/wishlist" routerLinkActive="active">Liste de Souhaits</button>
+      <button mat-button routerLink="/customer/profile" routerLinkActive="active">Profil</button>
+      <button mat-button routerLinkActive="active" (click)="logout()">Se Déconnecter</button>
+    </mat-toolbar>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
-<app-main-menu></app-main-menu>
-<app-home></app-home>
+<app-footer></app-footer>

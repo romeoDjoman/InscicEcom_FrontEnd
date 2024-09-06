@@ -1,56 +1,141 @@
-<div class="container">
-    <h2>Ajouter un Produit</h2>
-    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
-        <div class="file-upload-container">
-            <label class="file-upload-label">
-                <span>Choisir un Fichier</span>
-                <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
-                <mat-icon>attach_file</mat-icon>
-            </label>
+<section>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-stretch">
 
-            <div *ngIf="selectedFile" class="image-preview">
-                <div class="circle-image">
-                    <img [src]="imagepreview" alt="image sélectionnée" class="preview-image">
-                </div>
-            </div>
+
+      <div class="p-6 bg-gray-100">
+        <!-- Header Section -->
+        <header class="mb-6">
+          <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Recently added products</h2>
+          <p class="mt-4 text-gray-500">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas rerum quam amet
+            provident nulla error!
+          </p>
+        </header>
+
+        <!-- Mosaic Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Image 1 -->
+          <div class="space-y-4" *ngFor="product of products">
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=1" alt="Placeholder Image 1" />
+          </div>
+          <!-- Image 2 -->
+          <div class="space-y-4">
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=2" alt="Placeholder Image 2" />
+          </div>
+          <!-- Image 3 -->
+          <div class="space-y-4">
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=3" alt="Placeholder Image 2" />
+          </div>
+          <!-- Image 4 -->
+          <div class="space-y-4">
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=4" alt="Placeholder Image 2" />
+          </div>
+          <!-- Add more images as needed -->
         </div>
-        <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Choisir une catégorie</mat-label>
-            <mat-select formControlName="categoryId" name="categoryId">
-                <mat-option *ngFor="let category of listOfCategories" [value]="category.id">
-                    {{category.name}}
-                </mat-option>
-            </mat-select>
-            <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">
-                Ce champ est requis !
-            </mat-error>
-        </mat-form-field>
+      </div>
 
-        <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Nom</mat-label>
-            <input matInput type="text" placeholder="Nom" formControlName="name" />
-            <mat-error *ngIf="productForm.get('name')?.hasError('required')">
-                Ce champ est requis
-            </mat-error>
-        </mat-form-field>
 
-        <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Prix</mat-label>
-            <input matInput type="number" placeholder="Prix" formControlName="price" />
-            <mat-error *ngIf="productForm.get('price')?.hasError('required')">
-                Ce champ est requis
-            </mat-error>
-        </mat-form-field>
 
-        <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Description</mat-label>
-            <textarea matInput placeholder="Description" formControlName="description"></textarea>
-            <mat-error *ngIf="productForm.get('description')?.hasError('required')">
-                Ce champ est requis
-            </mat-error>
-        </mat-form-field>
+      <!-- Right Column (Form) -->
+      <div class="col-span-1 grid place-content-center rounded bg-gray-100 p-6 sm:p-8">
+        <div class="mx-auto max-w-md text-center lg:text-left">
+          <header>
+            <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Add a product</h2>
+            <p class="mt-4 text-gray-500">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas rerum quam amet
+              provident nulla error!
+            </p>
+          </header>
 
-        <button mat-raised-button color="primary" type="submit">Ajouter le Produit</button>
+          <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="space-y-4">
 
-    </form>
-</div>
+            <!-- File Upload -->
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+                <button type="button" class="btn" (click)="document.getElementById('fileInput').click()">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                       stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width=""
+                          d="M4 7v13m4-13v13m12-10h-4m-4-4h4m0 0l-5 5m5-5v6m-7 0l-5-5m5 5v-6"/>
+                  </svg>
+                  Select File
+                </button>
+              </label>
+
+              <!-- Image Preview -->
+              <div *ngIf="selectedFile" class="mt-4">
+                <div class="avatar">
+                  <div class="w-24 rounded-full">
+                    <img [src]="imagepreview" alt="Selected image"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Selection -->
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Select a Category</span>
+              </label>
+              <select class="select select-bordered" formControlName="categoryId" name="categoryId">
+                <option *ngFor="let category of listOfCategories" [value]="category.id">
+                  {{ category.name }}
+                </option>
+              </select>
+              <div class="text-red-500 text-sm mt-1" *ngIf="productForm.get('categoryId')?.hasError('required')">
+                This field is required!
+              </div>
+            </div>
+
+            <!-- Name Input -->
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Name</span>
+              </label>
+              <input type="text" placeholder="Name" class="input input-bordered" formControlName="name"/>
+              <div class="text-red-500 text-sm mt-1" *ngIf="productForm.get('name')?.hasError('required')">
+                This field is required
+              </div>
+            </div>
+
+            <!-- Price Input -->
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Price</span>
+              </label>
+              <input type="number" placeholder="Price" class="input input-bordered" formControlName="price"/>
+              <div class="text-red-500 text-sm mt-1" *ngIf="productForm.get('price')?.hasError('required')">
+                This field is required
+              </div>
+            </div>
+
+            <!-- Description Input -->
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Description</span>
+              </label>
+              <textarea placeholder="Description" class="textarea textarea-bordered"
+                        formControlName="description"></textarea>
+              <div class="text-red-500 text-sm mt-1" *ngIf="productForm.get('description')?.hasError('required')">
+                This field is required
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-control mt-2">
+              <button
+                class="btn btn-primary inline-block rounded border border-gray-800 bg-gray-800 px-12 py-3 text-sm font-medium text-white transition hover:shadow focus:outline-none focus:ring"
+                type="submit">Add Product
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+

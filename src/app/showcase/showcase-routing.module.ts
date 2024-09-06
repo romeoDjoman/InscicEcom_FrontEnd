@@ -7,6 +7,7 @@ import {MainMenuComponent} from "./components/main-menu/main-menu.component";
 
 const routes: Routes = [
   { path: 'showcase', component: ShowcaseComponent },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'main-menu', component: MainMenuComponent }
 ]
