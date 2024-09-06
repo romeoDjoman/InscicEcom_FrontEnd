@@ -1,58 +1,4 @@
-<div class="container">
-    <mat-card>
-        <mat-card-title>Inscription</mat-card-title>
-        <mat-card-content>
-            <form [formGroup]="signupForm">
-                <mat-form-field appearance="outline">
-                    <mat-label>Nom</mat-label>
-                    <input matInput formControlName="name" placeholder="Nom" required>
-                    <mat-error *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
-                        Veuillez entrer un nom valide.
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" placeholder="Email" required>
-                    <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
-                        Veuillez entrer un e-mail valide.
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Mot de passe</mat-label>
-                    <input matInput type="{{ hidePassword ? 'password' : 'text'}}" formControlName="password" placeholder="Mot de passe" required>
-
-                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-
-                    <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
-                        Veuillez entrer un mot de passe valide.
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Confirmer le mot de passe</mat-label>
-                    <input matInput type="{{ hidePassword ? 'password' : 'text'}}" formControlName="confirmPassword" placeholder="Mot de passe" required>
-
-                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-
-                    <mat-error *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
-                        Veuillez entrer un mot de passe valide.
-                    </mat-error>
-                </mat-form-field>
-
-                <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid" (click)="onSubmit()">S'inscrire</button>
-
-            </form>
-        </mat-card-content>
-    </mat-card>
-</div>
-
-
+<!-- Register -->
 <section class="section-register py-[100px] max-[1199px]:py-[70px]">
   <div class="flex flex-wrap justify-between relative items-center mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
     <div class="flex flex-wrap w-full mb-[-30px] hidden">
@@ -62,8 +8,7 @@
             <h2 class="font-Manrope text-[32px] font-bold leading-[1.2] text-[#2b2b2d] max-[1199px]:text-[28px] max-[991px]:text-[25px] max-[767px]:text-[22px]">Register</h2>
           </div>
           <div class="cr-banner-sub-title w-full">
-            <p class="max-w-[600px] m-auto font-Poppins text-[14px] text-[#212529] leading-[22px] text-center max-[1199px]:w-[80%] max-[991px]:w-full font-Poppins text-[#7a7a7a]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore lacus vel facilisis. </p>
+            <p class="max-w-[600px] m-auto font-Poppins text-[14px] text-[#212529] leading-[22px] text-center max-[1199px]:w-[80%] max-[991px]:w-full font-Poppins text-[#7a7a7a]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lacus vel facilisis. </p>
           </div>
         </div>
       </div>
@@ -74,52 +19,43 @@
           <div class="form-logo w-full mb-[30px] flex items-center justify-center">
             <img src="assets/img/logo/logo.png" alt="logo">
           </div>
-          <form [formGroup]="signupForm" class="cr-content-form w-full">
+          <form class="cr-content-form w-full" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
             <div class="flex flex-wrap w-full">
-
-              <mat-form-field appearance="outline" class="w-full mb-[30px]">
-                <mat-label>Nom</mat-label>
-                <input matInput formControlName="name" placeholder="Nom" required>
-                <mat-error *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
-                  Veuillez entrer un nom valide.
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="w-full mb-[30px]">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="Email" required>
-                <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
-                  Veuillez entrer un e-mail valide.
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="w-full mb-[30px]">
-                <mat-label>Mot de passe</mat-label>
-                <input matInput type="{{ hidePassword ? 'password' : 'text'}}" formControlName="password" placeholder="Mot de passe" required>
-                <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="  signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
-                  Veuillez entrer un mot de passe valide.
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="w-full mb-[30px]">
-                <mat-label>Confirmer le mot de passe</mat-label>
-                <input matInput type="{{ hidePassword ? 'password' : 'text'}}" formControlName="confirmPassword" placeholder="Mot de passe" required>
-                <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
-                  Veuillez entrer un mot de passe valide.
-                </mat-error>
-              </mat-form-field>
-
-              <div class="cr-register-buttons w-full text-center flex justify-between items-center flex-wrap">
-                <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid" (click)="onSubmit()">S'inscrire</button>
-                <a href="login.html" class="link py-[8px] text-[#777]">Have an account?</a>
+              <div class="min-[576px]:w-[50%] w-full pr-[12px] max-[575px]:p-[0] mb-[30px]">
+                <div class="form-group">
+                  <label for="name" class="mb-[9px] text-[#444] text-[15px] font-medium tracking-[0] leading-[1] inline-block">Name*</label>
+                  <input id="name" formControlName="name" type="text" placeholder="Enter Your First Name" class="cr-form-control w-full py-[0.575rem] px-[0.75rem] block text-[14px] text-[#777] font-normal leading-[1.5] border-[1px] border-solid border-[#e9e9e9] outline-[0] rounded-[5px]">
+                  <p class="text-yellow-400" *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">Please enter a valid name.</p>
+                </div>
               </div>
 
+              <div class="min-[576px]:w-[50%] w-full pr-[12px] max-[575px]:p-[0] mb-[30px]">
+                <div class="form-group">
+                  <label for="email" class="mb-[9px] text-[#444] text-[15px] font-medium tracking-[0] leading-[1] inline-block">Email*</label>
+                  <input id="email" formControlName="email" type="email" placeholder="Enter Your email" class="cr-form-control w-full py-[0.575rem] px-[0.75rem] block text-[14px] text-[#777] font-normal leading-[1.5] border-[1px] border-solid border-[#e9e9e9] outline-[0] rounded-[5px]">
+                  <p class="text-yellow-400" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">Please enter a valid email.</p>
+                </div>
+              </div>
+
+              <div class="min-[576px]:w-[50%] w-full pr-[12px] max-[575px]:p-[0] mb-[30px]">
+                <div class="form-group">
+                  <label for="password" class="mb-[9px] text-[#444] text-[15px] font-medium tracking-[0] leading-[1] inline-block">Password</label>
+                  <input id="password" formControlName="password" [type]="hidePassword ? 'password' : 'text'" placeholder="Enter Your Password" class="cr-form-control w-full py-[0.575rem] px-[0.75rem] block text-[14px] text-[#777] font-normal leading-[1.5] border-[1px] border-solid border-[#e9e9e9] outline-[0] rounded-[5px]">
+                </div>
+              </div>
+
+              <div class="min-[576px]:w-[50%] w-full pr-[12px] max-[575px]:p-[0] mb-[30px]">
+                <div class="form-group">
+                  <label for="confirmPassword" class="mb-[9px] text-[#444] text-[15px] font-medium tracking-[0] leading-[1] inline-block">Password confirmation</label>
+                  <input id="confirmPassword" formControlName="confirmPassword" [type]="hidePassword ? 'password' : 'text'" placeholder="Confirm Your Password" class="cr-form-control w-full py-[0.575rem] px-[0.75rem] block text-[14px] text-[#777] font-normal leading-[1.5] border-[1px] border-solid border-[#e9e9e9] outline-[0] rounded-[5px]">
+                </div>
+                <p class="text-yellow-400" *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">Please enter a valid password.</p>
+              </div>
+
+              <div class="cr-register-buttons w-full text-center flex justify-between items-center flex-wrap">
+                <button type="submit" [disabled]="signupForm.invalid" class="cr-button h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope capitalize leading-[1.2] bg-[#64b496] text-[#fff] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-[#000] hover:border-[#000]">Signup</button>
+                <a routerLink="/login" class="link py-[8px] text-[#777]">Have an account?</a>
+              </div>
             </div>
           </form>
         </div>
@@ -127,4 +63,3 @@
     </div>
   </div>
 </section>
-
