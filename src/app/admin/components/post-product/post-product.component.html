@@ -1,10 +1,10 @@
-<section>
+<!--<section>
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-stretch">
 
 
       <div class="p-6 bg-gray-100">
-        <!-- Header Section -->
+        &lt;!&ndash; Header Section &ndash;&gt;
         <header class="mb-6">
           <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Recently added products</h2>
           <p class="mt-4 text-gray-500">
@@ -13,31 +13,34 @@
           </p>
         </header>
 
-        <!-- Mosaic Section -->
+        &lt;!&ndash; Mosaic Section &ndash;&gt;
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Image 1 -->
-          <div class="space-y-4" *ngFor="product of products">
-            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=1" alt="Placeholder Image 1" />
+          &lt;!&ndash; Image 1 &ndash;&gt;
+          <div class="space-y-4" >
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=1"
+                 alt="Placeholder Image 1"/>
           </div>
-          <!-- Image 2 -->
+          &lt;!&ndash; Image 2 &ndash;&gt;
           <div class="space-y-4">
-            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=2" alt="Placeholder Image 2" />
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=2"
+                 alt="Placeholder Image 2"/>
           </div>
-          <!-- Image 3 -->
+          &lt;!&ndash; Image 3 &ndash;&gt;
           <div class="space-y-4">
-            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=3" alt="Placeholder Image 2" />
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=3"
+                 alt="Placeholder Image 2"/>
           </div>
-          <!-- Image 4 -->
+          &lt;!&ndash; Image 4 &ndash;&gt;
           <div class="space-y-4">
-            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=4" alt="Placeholder Image 2" />
+            <img class="w-full aspect-square object-cover rounded-lg" src="https://unsplash.it/400/400?random=4"
+                 alt="Placeholder Image 2"/>
           </div>
-          <!-- Add more images as needed -->
+          &lt;!&ndash; Add more images as needed &ndash;&gt;
         </div>
       </div>
 
 
-
-      <!-- Right Column (Form) -->
+      &lt;!&ndash; Right Column (Form) &ndash;&gt;
       <div class="col-span-1 grid place-content-center rounded bg-gray-100 p-6 sm:p-8">
         <div class="mx-auto max-w-md text-center lg:text-left">
           <header>
@@ -50,7 +53,7 @@
 
           <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="space-y-4">
 
-            <!-- File Upload -->
+            &lt;!&ndash; File Upload &ndash;&gt;
             <div class="form-control">
               <label class="label cursor-pointer">
                 <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
@@ -64,7 +67,7 @@
                 </button>
               </label>
 
-              <!-- Image Preview -->
+              &lt;!&ndash; Image Preview &ndash;&gt;
               <div *ngIf="selectedFile" class="mt-4">
                 <div class="avatar">
                   <div class="w-24 rounded-full">
@@ -74,7 +77,7 @@
               </div>
             </div>
 
-            <!-- Category Selection -->
+            &lt;!&ndash; Category Selection &ndash;&gt;
             <div class="form-control">
               <label class="label">
                 <span class="label-text">Select a Category</span>
@@ -89,7 +92,7 @@
               </div>
             </div>
 
-            <!-- Name Input -->
+            &lt;!&ndash; Title Input &ndash;&gt;
             <div class="form-control">
               <label class="label">
                 <span class="label-text">Name</span>
@@ -100,7 +103,7 @@
               </div>
             </div>
 
-            <!-- Price Input -->
+            &lt;!&ndash; Price Input &ndash;&gt;
             <div class="form-control">
               <label class="label">
                 <span class="label-text">Price</span>
@@ -111,7 +114,7 @@
               </div>
             </div>
 
-            <!-- Description Input -->
+            &lt;!&ndash; Description Input &ndash;&gt;
             <div class="form-control">
               <label class="label">
                 <span class="label-text">Description</span>
@@ -123,7 +126,7 @@
               </div>
             </div>
 
-            <!-- Submit Button -->
+            &lt;!&ndash; Submit Button &ndash;&gt;
             <div class="form-control mt-2">
               <button
                 class="btn btn-primary inline-block rounded border border-gray-800 bg-gray-800 px-12 py-3 text-sm font-medium text-white transition hover:shadow focus:outline-none focus:ring"
@@ -135,6 +138,82 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>-->
+
+<section>
+  <div class="flex justify-center items-center min-h-screen">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <div class="space-y-12">
+          <!-- Product Information Section -->
+          <div class="border-b border-gray-900/10 pb-12 items-center">
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Add a Book</h2>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <!-- Category -->
+              <div class="sm:col-span-3">
+                <label for="categoryId" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
+                <div class="mt-2">
+                  <select id="categoryId" formControlName="categoryId"
+                          class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm">
+                    <option *ngFor="let category of listOfCategories" [value]="category.id">{{ category.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Name -->
+              <div class="sm:col-span-3">
+                <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                <div class="mt-2">
+                  <input type="text" id="name" formControlName="name"
+                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm">
+                </div>
+              </div>
+
+              <!-- Price -->
+              <div class="sm:col-span-3">
+                <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
+                <div class="mt-2">
+                  <input type="number" id="price" formControlName="price"
+                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm">
+                </div>
+              </div>
+
+              <!-- Description -->
+              <div class="col-span-full">
+                <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                <div class="mt-2">
+                  <textarea id="description" formControlName="description" rows="3"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm"></textarea>
+                </div>
+              </div>
+
+              <!-- Image Upload -->
+              <div class="col-span-full">
+                <label for="file-upload" class="block text-sm font-medium leading-6 text-gray-900">Product Image</label>
+                <div class="mt-2">
+                  <input id="file-upload" type="file" (change)="onFileSelected($event)"
+                         class="block w-full text-gray-900">
+                </div>
+                <div *ngIf="imagepreview" class="mt-4">
+                  <img [src]="imagepreview" alt="Image Preview" class="max-h-48">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-end gap-x-6">
+            <button type="button" class="text-sm font-semibold leading-6 text-gray-900" (click)="cancel()">Cancel
+            </button>
+            <button type="submit"
+                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>

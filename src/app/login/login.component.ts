@@ -8,12 +8,14 @@ import { UserStorageService } from '../services/storage/user-storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
 
   loginForm!: FormGroup;
   hidePassword = true;
+  errorMessage: string | null = null;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -23,29 +25,44 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],  // Email validation
       password: [null, [Validators.required]],
     })
   }
+
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }
+
   onSubmit(): void {
+    if (this.loginForm.invalid) {
+      // Si le formulaire est invalide, n'envoyez pas la requête
+      this.errorMessage = "Please fill all required fields.";
+      return;
+    }
+
     const username = this.loginForm.get('email')!.value;
     const password = this.loginForm.get('password')!.value;
+
     this.authService.login(username, password).subscribe(
       (response) => {
-        // this.snackBar.open('Login Success', 'Ok', { duration: 5000 });
-        if(UserStorageService.isAdminLoggedIn()){
+        if(UserStorageService.isAdminLoggedIn()) {
           this.router.navigateByUrl('admin/dashboard');
-        }else if(UserStorageService.isCustomerLoggedIn()){
+        } else if(UserStorageService.isCustomerLoggedIn()) {
           this.router.navigateByUrl('customer/dashboard');
         }
       },
       (error) => {
-        this.snackBar.open('Bad credentials', 'Error', { duration: 5000 })
+        // Gestion des erreurs
+        if (error.status === 401) {
+          this.errorMessage = "Bad credentials. Please try again.";
+        } else if (error.status === 500) {
+          this.errorMessage = "Server error. Please try again later.";
+        } else {
+          this.errorMessage = "An unknown error occurred. Please try again.";
+        }
+        this.snackBar.open(this.errorMessage, 'Error', { duration: 5000 });
       }
-    )
+    );
   }
-
 }
